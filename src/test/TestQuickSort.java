@@ -7,7 +7,7 @@ import br.univates.QuickSort;
 public class TestQuickSort {
 	
 	@Test
-	public void testQuick() 
+	public void testQuick()
 	{
 		int vetor[] = {
 		24, 66, 87, 43, 11, 27, 4, 2, 7, 8, 4, 5, 12, 53,

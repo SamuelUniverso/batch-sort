@@ -9,8 +9,11 @@ public class TestReading
 	@Test
 	public void loadFile()
 	{
-		String path = "numbers-1.txt";
-		SimpleReader reader = new SimpleReader(path);
-		
+		SimpleReader reader = new SimpleReader("files/numbers-1.txt");
+		String line = reader.readLine();
+		while(line != null) {
+			line = reader.readLine();
+			System.out.println(line);
+		}
 	}
 }
