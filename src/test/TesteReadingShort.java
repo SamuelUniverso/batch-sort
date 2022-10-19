@@ -4,10 +4,10 @@ import org.junit.Test;
 
 import br.univates.SimpleReader;
 
-public class TestReading 
+public class TesteReadingShort 
 {
 	@Test
-	public void readFlieShort()
+	public void readFileAndSort()
 	{
 		String path = "files/numbers.txt";
 		int lines = countLines(path);
@@ -24,7 +24,6 @@ public class TestReading
 			count++;
 		}
 		reader.close();
-
 	}
 	
 	private int countLines(String path) 
