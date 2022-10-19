@@ -7,13 +7,38 @@ import br.univates.SimpleReader;
 public class TestReading 
 {
 	@Test
-	public void loadFile()
+	public void readFlieShort()
 	{
-		SimpleReader reader = new SimpleReader("files/numbers-1.txt");
+		String path = "files/numbers.txt";
+		int lines = countLines(path);
+
+		String[] vector = new String[lines];
+
+		SimpleReader reader = new SimpleReader(path);
 		String line = reader.readLine();
+		int count = 0;
+		while(line != null && count < vector.length)
+		{
+			vector[count] = line;
+			line = reader.readLine();
+			count++;
+		}
+		reader.close();
+
+	}
+	
+	private int countLines(String path) 
+	{
+		SimpleReader reader = new SimpleReader(path);
+
+		String line = reader.readLine();
+		int count = 0;
 		while(line != null) {
 			line = reader.readLine();
-			System.out.println(line);
+			count++;
 		}
+		reader.close();
+		
+		return count;
 	}
 }
