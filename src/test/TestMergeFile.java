@@ -22,6 +22,40 @@ public class TestMergeFile
 		
 		generatedSorteFile(file1, out1);
 		generatedSorteFile(file2, out2);
+
+		/** Read partial 1 */
+
+		int[] vector1 = loadVector(out1);
+		int[] vector2 = loadVector(out2);
+		
+		/**
+		 * Gravar arquivo
+		 */
+		SimpleWriter writer = new SimpleWriter("files/merge.txt");
+		/**
+		 * Gravar ambos os vetores em arquivo
+		 */
+		writer.close();
+	}
+	
+	public int[] loadVector(String path)
+	{
+		int lines = countLines(path);
+		int[] vector = new int[lines];
+
+		SimpleReader reader = new SimpleReader(path);
+		String line = reader.readLine();
+		int count = 0;
+		while(line != null && count < vector.length)
+		{
+			vector[count] = Integer.valueOf(line);
+			line = reader.readLine();
+			count++;
+		}
+		line = null;
+		reader.close();
+		
+		return vector;
 	}
 
 	public void generatedSorteFile(String path, String output)
