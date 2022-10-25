@@ -23,32 +23,38 @@ public class TestMergeFile
 		generatedSorteFile(file1, out1);
 		generatedSorteFile(file2, out2);
 
-		/** Read partial 1 */
-
 		int[] vector1 = loadVector(out1);
 		int[] vector2 = loadVector(out2);
 		
 		int size = vector1.length + vector2.length;
+
 		/**
-		 * Gravar arquivo
+		 * Gravar em arquivo;
 		 */
 		SimpleWriter writer = new SimpleWriter("files/merge.txt");
-		/**
-		 * Gravar ambos os vetores em arquivo
-		 */
+
 		int count1 = 0;
 		int count2 = 0;
+		int write1 = 0;
+		int write2 = 0;
 		for(int i = 0; i < size; i++)
 		{
 			if(i % 2 == 0)
 			{
-				writer.write(String.valueOf(vector1[count1]));
+				write1 = vector1[count1];
 				count1++;
 			}
 			else
 			{
-				writer.write(String.valueOf(vector2[count2]));
+				write2 = vector2[count2];
 				count2++;
+			}
+			
+			if(write1 < write2) {
+				writer.write(String.valueOf(write1));
+			}
+			else {
+				writer.write(String.valueOf(write2));
 			}
 		}
 		writer.close();
